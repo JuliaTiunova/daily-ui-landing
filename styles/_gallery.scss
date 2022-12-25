@@ -1,0 +1,12 @@
+.gallery {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  left: 102px;
+  overflow: hidden;
+
+  &-bg_image {
+    width: 100%;
+  }
+}

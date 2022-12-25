@@ -1,0 +1,11 @@
+.home {
+  position: absolute;
+  left: 102px;
+  top: 0;
+  bottom: 0;
+  width: calc(66vw - 102px);
+  height: 100vh;
+  background-color: $black-transparent;
+  z-index: 3;
+  border-right: 2px solid $white;
+}
