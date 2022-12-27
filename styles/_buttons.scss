@@ -23,7 +23,7 @@
 }
 
 .button {
-  border: 0;
+  border: 0 !important;
   background-color: transparent;
 
   &-toggle_section {
@@ -51,56 +51,62 @@
   }
 
   &-toggle_section_text {
+    position: relative;
     padding-left: 38px;
     font-size: 24px;
     font-weight: 300;
     line-height: 36px;
-    transition: $transition-menu;
+    overflow: hidden;
+
+    // &:hover {
+    //   text-decoration: underline;
+    // }
   }
 
-  &-home_start {
-    position: relative;
-    width: 223px;
-    height: 66px;
+  &-toggle_underline {
+    position: absolute;
+    width: calc(100% - 38px);
+    height: 2px;
+    background-color: $white;
+    left: -100%;
+    bottom: 0;
+  }
+
+  &-bg {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-100%, -50%);
+    width: calc(100% + 3px);
+    height: calc(100% + 3px);
+    background-color: $white;
+    border: none;
+    overflow: hidden;
+    border: 1px solid $white !important;
+  }
+
+  &-home_start:not(:disabled) {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -225px;
+    width: 224px;
+    height: 67px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: $black;
-    border: 1px solid $white;
+    border: none !important;
+    border: 1px solid $white !important;
     overflow: hidden;
+    transition: color $transition-window;
   }
 
-  &-home_start_bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: $white;
-    transform: translateX(-100%);
-    transition: $transition-menu;
-  }
-
-  &-home_start_hover {
+  &:hover {
     .button-home_start_text {
       color: $black;
     }
   }
-
-  //     .button-home_start_bg {
-  //       transform: translateX(0);
-  //     }
-  //   }
-
-  //   &-home_start_mouse_leave {
-  //     .button-home_start_bg {
-  //       opacity: 0;
-  //     }
-  //   }
-  //     .button-home_start_bg {
-  //       transform: translateX(100%);
-  //     }
-  //   }
 
   &-home_start_text {
     position: relative;
@@ -109,5 +115,6 @@
     font-weight: 500;
     font-size: 22px;
     z-index: 3;
+    transition: $transition-menu;
   }
 }

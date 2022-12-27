@@ -15,6 +15,22 @@
   &-active {
     .home {
       transform: translateX(0);
+
+      &-title_part_1 {
+        left: -61px;
+      }
+
+      &-title_part_2 {
+        left: 72px;
+      }
+
+      &-title_part_3 {
+        right: -41px;
+      }
+    }
+
+    .button-home_start:not(:disabled) {
+      right: 20px;
     }
   }
 
@@ -22,9 +38,8 @@
     position: relative;
     width: 100%;
     font-family: $font-josefin;
-    font-size: 170px;
+    font-size: 12vw;
     font-weight: 300;
-    line-height: 210px;
     color: $white;
   }
 
@@ -32,20 +47,21 @@
     position: absolute;
     top: 50%;
     width: fit-content;
+    transition: $transition-window;
   }
 
   &-title_part_1 {
-    left: -61px;
+    left: -400px;
     transform: translateY(-150%);
   }
 
   &-title_part_2 {
-    left: 72px;
+    left: 20%;
     transform: translateY(-50%);
   }
 
   &-title_part_3 {
-    right: -41px;
+    right: 40%;
     transform: translateY(50%);
   }
 }

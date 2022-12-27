@@ -4,10 +4,12 @@ const cache = {
   $body: $('body'),
   $toggleSectionButtonElement: $('.js-toggle-section'),
   $buttonText: $('.button-toggle_section_text'),
+  $btnHomeBackground: $('.button-bg'),
 };
 
 let isMenuActive = false;
 let isSectionButtonOpened = false;
+let isMouseEntered = false;
 let $mainSections = ['about', 'gallery', 'contacts', 'menu'];
 
 const toggleSectionButton = (isSectionButtonOpened) => {
@@ -29,15 +31,15 @@ const toggleSectionButton = (isSectionButtonOpened) => {
       el !== 'menu' &&
       isSectionButtonOpened
     ) {
-      text = `close ${el}`;
+      text = `close ${el} <span class="button-toggle_underline"></span>`;
       break;
     } else {
-      text = 'open gallery';
+      text = 'open gallery <span class="button-toggle_underline"></span>';
     }
   }
 
   isMenuActive = cache.$body.hasClass(`menu-active`);
-  cache.$buttonText[0].innerText = text;
+  cache.$buttonText[0].innerHTML = text;
 };
 
 const toggleSections = (isElementActive, section) => {
@@ -101,26 +103,28 @@ cache.$toggleSectionButtonElement.on('click', function () {
   toggleSections(isSectionButtonOpened, 'gallery');
   toggleSectionButton(isSectionButtonOpened);
   closeAllSections(!isSectionButtonOpened);
+
+  $('.js-toggle-section-button-text').trigger('mouseenter');
 });
 
-$('.js-button-home-start')
-  .on('mouseenter', function () {
-    const $this = $(this);
-    $this.addClass('button-home_start_hover');
-    $('.button-home_start_bg').css('transform', 'translateX(0)');
+$('.js-toggle-section-button-text')
+  .on('mouseenter', (e) => {
+    $('.button-toggle_underline').animate({ left: '38px' }, 400);
+    isMouseEntered = true;
   })
-  .on('mouseleave', function () {
-    const $this = $(this);
-    $('.button-home_start_bg').css('transform', 'translateX(100%)');
-    $this.removeClass('button-home_start_hover');
-    // $this.addClass('button-home_start_mouse_leave ');
-    // setTimeout(() => {
-    //   $('.button-home_start_bg').css('transform', 'translateX(-100%)');
-    //   $this.removeClass('button-home_start_mouse_leave ');
-    // }, 800);
+  .on('mouseleave', (e) => {
+    if (isMouseEntered) {
+      $('.button-toggle_underline').animate({ left: '100%' }, 400);
+      $('.button-toggle_underline').animate({ left: '-100%' }, 0);
+      isMouseEntered = false;
+    }
+  });
 
-    // $this.addClass('button-home_mouse_leave');
-    // setTimeout(() => {
-    //   $this.removeClass('button-home_mouse_leave');
-    // }, 1000);
+$('.js-button-home-start')
+  .on('mouseenter', async function (e) {
+    cache.$btnHomeBackground.animate({ left: '100%' }, 400);
+  })
+  .on('mouseleave', function (e) {
+    cache.$btnHomeBackground.animate({ left: '201%' }, 400);
+    cache.$btnHomeBackground.animate({ left: '0' }, 0);
   });
