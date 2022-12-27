@@ -1,0 +1,28 @@
+.main {
+  top: 0;
+  left: 100px;
+  bottom: 0;
+  height: 100vh;
+  width: calc(100% - 100px);
+  overflow: hidden;
+  //   transform-style: preserve-3d;
+
+  &-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.section {
+  &-title {
+    padding: 0;
+    font-family: $font-josefin;
+    font-size: 108px;
+    font-weight: 300;
+  }
+
+  &-title_text {
+  }
+}

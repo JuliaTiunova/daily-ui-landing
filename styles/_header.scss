@@ -1,20 +1,21 @@
 .header {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   bottom: 0;
-  width: 102px;
+  height: 100vh;
+  width: 100px;
   border-right: 2px solid $white;
   background-color: $black;
   transition: $transition-window;
   overflow: hidden;
   z-index: 100;
 
-  &--active {
-    max-width: unset;
-    transition: $transition-window;
-    width: 66vw;
-  }
+  // &--active {
+  //   max-width: unset;
+  //   transition: $transition-window;
+  //   width: 66vw;
+  // }
 
   &:hover {
     cursor: pointer;
@@ -23,7 +24,7 @@
   &-menu {
     height: 100%;
     position: absolute;
-    left: calc(102px + 5vw);
+    left: calc(100px + 5vw);
     top: 0;
   }
 
@@ -34,85 +35,4 @@
     width: 66vw;
     transition: $transition-window;
   }
-}
-
-.menu {
-  font-family: $font-inter;
-  font-weight: 200;
-  transition: $transition-menu;
-
-  &-list {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  &-item {
-    width: 100%;
-    padding: 8px 0px;
-    font-size: 60px;
-    line-height: 90px;
-    font-weight: 200;
-    color: $white;
-    border-bottom: 2px solid transparent;
-    transition: ease-in-out 0.2s;
-
-    &:hover {
-      border-bottom: 2px solid $white;
-    }
-  }
-}
-
-.menu-active {
-  .header-menu_title_wrapper {
-    transform: translateX(0);
-    right: 102px;
-    z-index: 2;
-  }
-}
-
-.menu_title {
-  &-wrapper {
-    font-family: $font-josefin;
-    font-size: 108px;
-    font-weight: 300;
-    color: $grey;
-  }
-}
-
-.burger {
-  &-button {
-    position: relative;
-    left: 21px;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 8px 0;
-    background-color: $black;
-    border: none;
-
-    &:hover {
-      .burger-line {
-        margin: 16px 0;
-      }
-    }
-  }
-  &-line {
-    width: 60px;
-    height: 3px;
-    background-color: $white;
-    border-radius: 2px;
-    margin: 8px 0px;
-    transition: $transition-menu;
-  }
-  &-line_top {
-  }
-  &-line_bottom {
-  }
-}
-
-.main {
-  position: relative;
-  top: 0;
-  bottom: 0;
-  padding: 20px;
 }

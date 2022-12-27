@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400&family=Josefin+Sans:wght@200;300;400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500&family=Josefin+Sans:wght@200;300;400&display=swap"
       rel="stylesheet"
     />
     <link
@@ -21,49 +21,96 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="script.js" defer></script>
   </head>
-  <body class="body">
-    <div class="row no-gutters d-grid">
-      <header class="header align-items-center p-0 js-header">
-        <div
-          class="header-menu_title_wrapper menu_title-wrapper d-flex justify-content-between"
+  <body class="body home-active">
+    <header class="header d-flex align-items-center p-0 js-header">
+      <div
+        class="header-menu_title_wrapper menu_title-wrapper section-title d-flex justify-content-between align-self-start"
+      >
+        <p
+          class="header-menu_title section-title_text menu_title text-uppercase"
         >
-          <p class="header-menu_title menu_title text-uppercase">Menu</p>
-          <p class="header-menu_title menu_title text-uppercase">Menu</p>
-        </div>
-        <button class="burger-button js-burger-button">
-          <div class="burger-line burger-line_top"></div>
-          <div class="burger-line burger-line_bottom"></div>
+          Menu
+        </p>
+        <p
+          class="header-menu_title section-title_text menu_title text-uppercase"
+        >
+          Menu
+        </p>
+      </div>
+      <button class="burger-button js-burger-button">
+        <div class="burger-line burger-line_top"></div>
+        <div class="burger-line burger-line_bottom"></div>
+      </button>
+      <nav class="text-centered header-menu menu w-100">
+        <ul class="menu-list list-unstyled w-100">
+          <li class="menu-item text-nowrap js-menu-item" data-section="about">
+            <p>About us</p>
+          </li>
+          <li
+            class="menu-item text-nowrap js-menu-item js-menu-gallery"
+            data-section="gallery"
+          >
+            <p>Gallery</p>
+          </li>
+          <li
+            class="menu-item text-nowrap js-menu-item"
+            data-section="contacts"
+          >
+            <p>Let's talk</p>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="main position-relative">
+      <section class="home d-flex align-items-center">
+        <h1 class="home-title d-flex flex-column">
+          <p class="home-title_part home-title_part_1 text-uppercase">Break</p>
+          <p class="home-title_part home-title_part_2 text-uppercase">The</p>
+          <p class="home-title_part home-title_part_3 text-uppercase">Rules</p>
+        </h1>
+        <button class="button button-home_start js-button-home-start">
+          <p class="button-home_start_text">Start</p>
+          <div class="button-home_start_bg"></div>
         </button>
-        <nav class="text-centered header-menu menu w-100">
-          <ul class="menu-list list-unstyled w-100">
-            <li class="menu-item text-nowrap">About us</li>
-            <li class="menu-item text-nowrap">Gallery</li>
-            <li class="menu-item text-nowrap">Let's talk</li>
-          </ul>
-        </nav>
-      </header>
-    </div>
-    <div class="container-fluid position-relative bottom-0">
-      <div class="">
-        <main class="main">
-          <section class="home">
-            <!-- <img
-              class="home-bg_image"
-              src="img/home_bg.jpg"
-              alt="underground escalator from above"
-            /> -->
-          </section>
-          <section class="about"></section>
-          <section class="contacts"></section>
-        </main>
-      </div>
-      <div class="row m-0">
-        <div class="col-11">
-          <div class="gallery">
-            <img class="gallery-bg_image" src="img/gallery_bg.jpg" alt="" />
-          </div>
+      </section>
+      <section class="about main-section">
+        <div
+          class="section-title about-title_wrapper d-flex justify-content-between"
+        >
+          <p class="section-title_text text-uppercase">About us</p>
+          <p class="section-title_text text-uppercase">About us</p>
         </div>
-      </div>
-    </div>
+      </section>
+      <section class="gallery main-section">
+        <div
+          class="section-title gallery-title_wrapper d-flex justify-content-between"
+        >
+          <p class="section-title_text text-uppercase">Gallery</p>
+          <p class="section-title_text text-uppercase">Gallery</p>
+        </div>
+        <div class="gallery-bg">
+          <img class="gallery-bg_image" src="img/gallery_bg.jpg" alt="" />
+        </div>
+      </section>
+      <section class="contacts main-section">
+        <div
+          class="section-title contacts-title_wrapper d-flex justify-content-between"
+        >
+          <p class="section-title_text text-uppercase">Contacts</p>
+          <p class="section-title_text text-uppercase">Contacts</p>
+        </div>
+      </section>
+      <button
+        class="button button-toggle_section js-toggle-section d-flex align-items-center justify-content-center"
+      >
+        <img
+          class="button-toggle_section_img d-block"
+          src="img/arrow.svg"
+          alt="arrow"
+        />
+        <p class="button-toggle_section_text">open gallery</p>
+      </button>
+    </main>
+    <footer class="p-5"></footer>
   </body>
 </html>

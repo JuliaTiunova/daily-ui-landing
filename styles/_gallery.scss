@@ -1,12 +1,35 @@
 .gallery {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  height: 100vh;
-  left: 102px;
-  overflow: hidden;
+  height: 100%;
+
+  &-bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    // height: 100vh;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+  }
 
   &-bg_image {
     width: 100%;
+  }
+
+  &-title_wrapper {
+    position: relative;
+    left: 0;
+    transform: translateX(-100%);
+    z-index: 2;
+    transition: $transition-window;
+    color: $white1;
+  }
+
+  &-active {
+    .gallery {
+      &-title_wrapper {
+        transform: translateX(102px);
+      }
+    }
   }
 }

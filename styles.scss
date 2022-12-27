@@ -1,8 +1,13 @@
 @import 'styles/variables';
 @import 'styles/bootstrap-override';
+@import 'styles/about-us';
+@import 'styles/buttons';
+@import 'styles/gallery';
+@import 'styles/contacts';
 @import 'styles/header';
 @import 'styles/home';
-@import 'styles/gallery';
+@import 'styles/main';
+@import 'styles/menu';
 
 * {
   margin: 0;
@@ -17,3 +22,10 @@
 p {
   margin: 0 !important;
 }
+
+// .wrapper {
+//   height: 100vh;
+//   overflow-y: auto;
+//   overflow-x: hidden;
+//   perspective: 10px;
+// }
