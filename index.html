@@ -22,6 +22,11 @@
     <script src="script.js" defer></script>
   </head>
   <body class="body home-active">
+    <div
+      class="mobile-cover d-flex d-xl-none align-items-center justify-content-center"
+    >
+      <p class="mobile-cover_text">Make me wider</p>
+    </div>
     <header class="header d-flex align-items-center p-0 js-header">
       <div
         class="header-menu_title_wrapper menu_title-wrapper section-title d-flex justify-content-between align-self-start"
@@ -68,8 +73,8 @@
           <p class="home-title_part home-title_part_2 text-uppercase">The</p>
           <p class="home-title_part home-title_part_3 text-uppercase">Rules</p>
         </h1>
-        <button class="button button-home_start js-button-home-start">
-          <p class="button-home_start_text">Start</p>
+        <button class="button button-main button-home js-button-home-main">
+          <p class="button-main_text">Start</p>
           <div class="button-bg"></div>
         </button>
       </section>
@@ -114,6 +119,20 @@
         </p>
       </button>
     </main>
-    <footer class="p-5"></footer>
+    <footer class="footer">
+      <form class="footer-form">
+        <input
+          class="footer-subscribe"
+          type="email"
+          name="email"
+          id="email"
+          placeholder="e-mail..."
+        />
+        <button class="button button-main js-button-home-main">
+          <p class="button-main_text">Subscribe</p>
+          <div class="button-bg"></div>
+        </button>
+      </form>
+    </footer>
   </body>
 </html>

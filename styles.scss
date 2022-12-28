@@ -8,6 +8,7 @@
 @import 'styles/home';
 @import 'styles/main';
 @import 'styles/menu';
+@import 'styles/footer';
 
 * {
   margin: 0;
@@ -23,9 +24,21 @@ p {
   margin: 0 !important;
 }
 
-// .wrapper {
-//   height: 100vh;
-//   overflow-y: auto;
-//   overflow-x: hidden;
-//   perspective: 10px;
-// }
+.mobile {
+  &-cover {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $black;
+    z-index: 999;
+  }
+
+  &-cover_text {
+    padding: 30px;
+    font-family: $font-josefin;
+    font-size: 32px;
+    color: $white;
+  }
+}

@@ -120,11 +120,13 @@ $('.js-toggle-section-button-text')
     }
   });
 
-$('.js-button-home-start')
-  .on('mouseenter', async function (e) {
-    cache.$btnHomeBackground.animate({ left: '100%' }, 400);
+$('.js-button-home-main')
+  .on('mouseenter', function () {
+    const bground = $(this).find(cache.$btnHomeBackground);
+    bground.animate({ left: '100%' }, 400);
   })
   .on('mouseleave', function (e) {
-    cache.$btnHomeBackground.animate({ left: '201%' }, 400);
-    cache.$btnHomeBackground.animate({ left: '0' }, 0);
+    const bground = $(this).find(cache.$btnHomeBackground);
+    bground.animate({ left: '201%' }, 400);
+    bground.animate({ left: '0' }, 0);
   });

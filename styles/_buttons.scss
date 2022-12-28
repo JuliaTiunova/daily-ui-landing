@@ -28,7 +28,7 @@
 
   &-toggle_section {
     position: absolute;
-    left: calc(66vw - 100px);
+    left: 60.5vw;
     bottom: 60px;
     padding: 15px;
     font-family: $font-josefin;
@@ -85,12 +85,8 @@
     border: 1px solid $white !important;
   }
 
-  &-home_start:not(:disabled) {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: -225px;
-    width: 224px;
+  &-main:not(:disabled) {
+    width: 15.5vw;
     height: 67px;
     display: flex;
     align-items: center;
@@ -103,18 +99,25 @@
   }
 
   &:hover {
-    .button-home_start_text {
+    .button-main_text {
       color: $black;
     }
   }
 
-  &-home_start_text {
+  &-main_text {
     position: relative;
     color: $white;
-    font-family: $font-inter;
-    font-weight: 500;
-    font-size: 22px;
+    font-family: $font-josefin;
+    font-weight: 300;
+    font-size: 24px;
     z-index: 3;
     transition: $transition-menu;
+  }
+
+  &-home:not(:disabled) {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -15.5vw;
   }
 }

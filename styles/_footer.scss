@@ -1,0 +1,19 @@
+.footer {
+  position: relative;
+  top: 0;
+  left: 100px;
+  bottom: 0;
+  width: calc(100% - 100px);
+  padding: 72px 20px;
+  overflow: hidden;
+
+  &-form {
+    display: flex;
+    gap: 20px;
+  }
+
+  &-subscribe {
+    height: 67px;
+    width: 24vw;
+  }
+}

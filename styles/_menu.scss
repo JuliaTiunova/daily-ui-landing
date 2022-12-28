@@ -52,7 +52,7 @@
   .header {
     max-width: unset;
     transition: $transition-window;
-    width: 66vw;
+    width: calc(60.5vw + 100px);
 
     &-menu_title_wrapper {
       transform: translateX(0);
