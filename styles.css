@@ -289,7 +289,7 @@
 }
 
 .gallery-active .gallery-bg.right:hover::before, .gallery-active .gallery-bg.left:hover::before {
-  background: url(./img/arrow.svg) center center no-repeat;
+  background: url(img/arrow.svg) center center no-repeat;
   background-size: 60px 60px;
   background-color: rgba(19, 22, 24, 0.7);
 }
