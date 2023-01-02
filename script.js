@@ -63,7 +63,10 @@ const toggleSections = (isElementActive, section) => {
   if (section === 'gallery' && isElementActive && !isGalleryActive) {
     initSlider();
     isGalleryActive = true;
-  } else if (section === 'gallery' && !isElementActive && isGalleryActive) {
+  } else if (
+    (section === 'gallery' && !isElementActive && isGalleryActive) ||
+    (section !== 'gallery' && section !== 'menu')
+  ) {
     closeSlider();
     isGalleryActive = false;
   }
@@ -109,6 +112,14 @@ const closeSlider = () => {
   });
 };
 
+const returnToHome = () => {
+  isSectionButtonOpened = !isSectionButtonOpened;
+  toggleSections(isSectionButtonOpened, 'gallery');
+  toggleSectionButton(isSectionButtonOpened);
+  closeAllSections(!isSectionButtonOpened);
+  $('.button-toggle_section_text').trigger('mouseenter');
+};
+
 $('.js-burger-button').on('click', function () {
   isMenuActive = !isMenuActive;
   toggleSections(isMenuActive, 'menu');
@@ -134,7 +145,12 @@ $('.js-menu-item').on('click', function () {
       isElementActive = true;
     }
   });
-  toggleSections(isElementActive, section);
+
+  if (section === 'home') {
+    returnToHome();
+  } else {
+    toggleSections(isElementActive, section);
+  }
 });
 
 cache.$toggleSectionButtonElement.on('click', function (e) {
@@ -144,11 +160,7 @@ cache.$toggleSectionButtonElement.on('click', function (e) {
 
   e.preventDefault();
 
-  isSectionButtonOpened = !isSectionButtonOpened;
-  toggleSections(isSectionButtonOpened, 'gallery');
-  toggleSectionButton(isSectionButtonOpened);
-  closeAllSections(!isSectionButtonOpened);
-  $('.button-toggle_section_text').trigger('mouseenter');
+  returnToHome();
 });
 
 cache.$buttonSecondary
