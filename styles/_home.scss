@@ -8,9 +8,9 @@
   height: 100%;
   overflow: hidden;
   background-color: $black-transparent;
-  border-right: 2px solid $white;
+  border-right: 1px solid $white;
   transition: $transition-window;
-  z-index: 3;
+  z-index: 30;
 
   &-active {
     .home {
@@ -31,6 +31,12 @@
 
     .button-home:not(:disabled) {
       right: 20px;
+    }
+
+    .gallery {
+      &-author_link {
+        opacity: 0;
+      }
     }
   }
 

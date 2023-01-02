@@ -3,14 +3,17 @@
 const cache = {
   $body: $('body'),
   $toggleSectionButtonElement: $('.js-toggle-section'),
-  $buttonText: $('.button-toggle_section_text'),
+  $buttonSecondary: $('.button-secondary'),
+  $buttonSecondaryText: $('.button-secondary_text'),
   $btnHomeBackground: $('.button-bg'),
+  $galleryImg: $('.gallery-bg'),
 };
 
 let isMenuActive = false;
 let isSectionButtonOpened = false;
 let isMouseEntered = false;
-let $mainSections = ['about', 'gallery', 'contacts', 'menu'];
+let isGalleryActive = false;
+let mainSections = ['about', 'gallery', 'contacts', 'menu'];
 
 const toggleSectionButton = (isSectionButtonOpened) => {
   cache.$toggleSectionButtonElement.toggleClass(
@@ -18,7 +21,7 @@ const toggleSectionButton = (isSectionButtonOpened) => {
     isSectionButtonOpened
   );
   let text = '';
-  for (let el of $mainSections) {
+  for (let el of mainSections) {
     if (
       cache.$body.hasClass(`${el}-active`) &&
       el !== 'menu' &&
@@ -39,15 +42,17 @@ const toggleSectionButton = (isSectionButtonOpened) => {
   }
 
   isMenuActive = cache.$body.hasClass(`menu-active`);
-  cache.$buttonText[0].innerHTML = text;
+  cache.$buttonSecondaryText[0].innerHTML = text;
 };
 
 const toggleSections = (isElementActive, section) => {
   if (section !== 'menu') {
-    $mainSections.forEach((el) => {
+    mainSections.forEach((el) => {
       if (el === section) {
+        const $sectionEl = $(`.${el}`);
         cache.$body.toggleClass(`${el}-active`, isElementActive);
         cache.$body.removeClass(`menu-active`, isElementActive);
+        $('html, body').animate({ scrollTop: $sectionEl.offset() }, 400);
       } else {
         cache.$body.removeClass(`${el}-active`);
       }
@@ -56,7 +61,15 @@ const toggleSections = (isElementActive, section) => {
     cache.$body.toggleClass(`${section}-active`, isElementActive);
   }
 
-  for (let el of $mainSections) {
+  if (section === 'gallery' && isElementActive && !isGalleryActive) {
+    initSlider();
+    isGalleryActive = true;
+  } else if (section === 'gallery' && !isElementActive && isGalleryActive) {
+    closeSlider();
+    isGalleryActive = false;
+  }
+
+  for (let el of mainSections) {
     if (cache.$body.hasClass(`${el}-active`) && el !== 'menu') {
       cache.$body.removeClass(`home-active`);
       isSectionButtonOpened = true;
@@ -73,7 +86,7 @@ const closeAllSections = (boolean) => {
     return;
   }
 
-  $mainSections.forEach((el) => {
+  mainSections.forEach((el) => {
     cache.$body.removeClass(`${el}-active`);
   });
   cache.$body.addClass(`home-active`);
@@ -90,7 +103,7 @@ $('.js-menu-item').on('click', function () {
   let isElementActive = false;
   isMenuActive = false;
 
-  $mainSections.forEach((el) => {
+  mainSections.forEach((el) => {
     if (!cache.$body.hasClass(`${el}-active`)) {
       isElementActive = true;
     }
@@ -98,24 +111,29 @@ $('.js-menu-item').on('click', function () {
   toggleSections(isElementActive, section);
 });
 
-cache.$toggleSectionButtonElement.on('click', function () {
+cache.$toggleSectionButtonElement.on('click', function (e) {
+  if (!$(this).hasClass('button-toggle_section')) {
+    return;
+  }
+
+  e.preventDefault();
+
   isSectionButtonOpened = !isSectionButtonOpened;
   toggleSections(isSectionButtonOpened, 'gallery');
   toggleSectionButton(isSectionButtonOpened);
   closeAllSections(!isSectionButtonOpened);
-
-  $('.js-toggle-section-button-text').trigger('mouseenter');
+  $('.button-toggle_section_text').trigger('mouseenter');
 });
 
-$('.js-toggle-section-button-text')
-  .on('mouseenter', (e) => {
-    $('.button-toggle_underline').animate({ left: '38px' }, 400);
+cache.$buttonSecondary
+  .on('mouseenter', function (e) {
+    $(this).find('.button-toggle_underline').animate({ left: '38px' }, 400);
     isMouseEntered = true;
   })
-  .on('mouseleave', (e) => {
+  .on('mouseleave', function (e) {
     if (isMouseEntered) {
-      $('.button-toggle_underline').animate({ left: '100%' }, 400);
-      $('.button-toggle_underline').animate({ left: '-100%' }, 0);
+      $(this).find('.button-toggle_underline').animate({ left: '100%' }, 400);
+      $(this).find('.button-toggle_underline').animate({ left: '-100%' }, 0);
       isMouseEntered = false;
     }
   });
@@ -130,3 +148,53 @@ $('.js-button-home-main')
     bground.animate({ left: '201%' }, 400);
     bground.animate({ left: '0' }, 0);
   });
+
+cache.$galleryImg.on('click', function () {
+  const $this = $(this);
+
+  if ($this.hasClass('active')) {
+    return;
+  }
+
+  $this.addClass('active center centerIndex');
+  $this.prev().addClass('leftIndex');
+  $this.next().addClass('rightIndex');
+
+  if (!$this.prev().hasClass('left')) {
+    $this.prev().addClass('left');
+  }
+
+  if (!$this.next().hasClass('right')) {
+    $this.next().addClass('right');
+  }
+
+  if ($this.next() && $this.next().hasClass('active')) {
+    $this.next().next().removeClass('rightIndex');
+    $this.next().removeClass('active center centerIndex');
+    $this.removeClass('left leftIndex');
+  }
+
+  if ($this.prev() && $this.prev().hasClass('active')) {
+    $this.prev().prev().removeClass('leftIndex');
+    $this.prev().removeClass('active center centerIndex');
+    $this.removeClass('right rightIndex');
+  }
+});
+
+function initSlider() {
+  cache.$galleryImg.each((i, el) => {
+    if (i === 0) {
+      $(el).addClass('leftEdge');
+      $(el).trigger('click');
+    } else if (i === cache.$galleryImg.length - 1) {
+      $(el).addClass('rightEdge right');
+    }
+  });
+}
+
+function closeSlider() {
+  cache.$galleryImg.each((i, el) => {
+    $(el).removeClass();
+    $(el).addClass('gallery-bg js-gallery-img');
+  });
+}

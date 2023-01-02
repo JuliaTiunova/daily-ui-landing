@@ -1,0 +1,21 @@
+.input {
+  border: 0;
+  padding: 15px;
+  background-color: $black;
+  border: 1px solid $white;
+  color: $white;
+
+  &::placeholder {
+    color: $white-transparent;
+  }
+
+  &:focus,
+  &:active {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid $white;
+  }
+
+  &-text {
+  }
+}

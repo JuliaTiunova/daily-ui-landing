@@ -19,7 +19,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="script.js" defer></script>
+    <script src="script.js" type="module" defer></script>
   </head>
   <body class="body home-active">
     <div
@@ -49,7 +49,7 @@
       <nav class="text-centered header-menu menu w-100">
         <ul class="menu-list list-unstyled w-100">
           <li class="menu-item text-nowrap js-menu-item" data-section="about">
-            <p>About us</p>
+            <p>About</p>
           </li>
           <li
             class="menu-item text-nowrap js-menu-item js-menu-gallery"
@@ -82,8 +82,8 @@
         <div
           class="section-title about-title_wrapper d-flex justify-content-between"
         >
-          <p class="section-title_text text-uppercase">About us</p>
-          <p class="section-title_text text-uppercase">About us</p>
+          <p class="section-title_text text-uppercase">About</p>
+          <p class="section-title_text text-uppercase">About</p>
         </div>
       </section>
       <section class="gallery main-section">
@@ -93,9 +93,29 @@
           <p class="section-title_text text-uppercase">Gallery</p>
           <p class="section-title_text text-uppercase">Gallery</p>
         </div>
-        <div class="gallery-bg">
-          <img class="gallery-bg_image" src="img/gallery_bg_1.jpg" alt="" />
+        <div class="gallery-imgs">
+          <div class="gallery-bg js-gallery-img">
+            <img class="gallery-bg_image" src="img/gallery_bg_1.jpg" alt="" />
+          </div>
+          <div class="gallery-bg js-gallery-img">
+            <img class="gallery-bg_image" src="img/gallery_bg_3.jpg" alt="" />
+          </div>
+          <div class="gallery-bg js-gallery-img">
+            <img class="gallery-bg_image" src="img/gallery_bg_2.jpg" alt="" />
+          </div>
+          <div class="gallery-bg js-gallery-img">
+            <img class="gallery-bg_image" src="img/gallery_bg_4.jpeg" alt="" />
+          </div>
+          <div class="gallery-bg js-gallery-img">
+            <img class="gallery-bg_image" src="img/gallery_bg_5.jpeg" alt="" />
+          </div>
         </div>
+        <a
+          class="button gallery-author_link"
+          target="_blank"
+          href="https://unsplash.com/@johnnyboylee?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+          >Photos by Johnny Briggs on Unsplash</a
+        >
       </section>
       <section class="contacts main-section">
         <div
@@ -105,24 +125,27 @@
           <p class="section-title_text text-uppercase">Contacts</p>
         </div>
       </section>
-      <button
-        class="button button-toggle_section js-toggle-section d-flex align-items-center justify-content-center"
+      <a
+        href="#"
+        class="button button-secondary button-toggle_section js-toggle-section d-flex align-items-center justify-content-center"
       >
         <img
-          class="button-toggle_section_img d-block"
+          class="button-secondary_img button-toggle_section_img d-block"
           src="img/arrow.svg"
           alt="arrow"
         />
-        <p class="button-toggle_section_text js-toggle-section-button-text">
+        <p
+          class="button-secondary_text button-toggle_section_text js-button-secondary-text"
+        >
           open gallery
           <span class="button-toggle_underline"></span>
         </p>
-      </button>
+      </a>
     </main>
     <footer class="footer">
       <form class="footer-form">
         <input
-          class="footer-subscribe"
+          class="footer-subscribe input input-text"
           type="email"
           name="email"
           id="email"
@@ -133,6 +156,26 @@
           <div class="button-bg"></div>
         </button>
       </form>
+      <div class="footer-social">
+        <a
+          href="https://www.behance.net/yuliiatiunova"
+          class="button button-secondary js-toggle-section d-flex align-items-center justify-content-center"
+          target="_blank"
+        >
+          <img
+            class="button-secondary_img button-footer_social_img d-block"
+            src="img/arrow.svg"
+            alt="arrow"
+          />
+          <p
+            class="button-secondary_text button-footer_social_text js-button-secondary-text"
+          >
+            follow me on
+            <span class="button-toggle_underline"></span>
+          </p>
+          <img class="social-img" src="img/behance.svg" />
+        </a>
+      </div>
     </footer>
   </body>
 </html>
