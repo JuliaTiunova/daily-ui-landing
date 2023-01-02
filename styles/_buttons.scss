@@ -100,7 +100,7 @@
 
   &-main:not(:disabled) {
     position: relative;
-    width: 15.5vw;
+    min-width: 15.5vw;
     height: 67px;
     display: flex;
     align-items: center;

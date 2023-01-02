@@ -5,7 +5,6 @@
   height: 100vh;
   width: calc(100% - 100px);
   overflow: hidden;
-  //   transform-style: preserve-3d;
 
   &-section {
     position: absolute;
@@ -17,12 +16,10 @@
 
 .section {
   &-title {
+    width: 115%;
     padding: 0;
     font-family: $font-josefin;
     font-size: 7.5vw;
     font-weight: 300;
-  }
-
-  &-title_text {
   }
 }

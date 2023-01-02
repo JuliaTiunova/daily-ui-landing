@@ -4,14 +4,14 @@
   width: 100%;
   height: 100vh;
   z-index: 4;
-  transition: $transition-window;
+  transition: transform $transition-window;
 
   &-title_wrapper {
     position: relative;
     left: 0;
     transform: translateX(-200%);
     z-index: 2;
-    transition: $transition-window;
+    transition: transform $transition-window;
     color: $blue;
   }
 
@@ -19,7 +19,7 @@
     .about {
       transform: translateX(0);
       &-title_wrapper {
-        transform: translateX(102px);
+        transform: translateX(20px);
       }
     }
   }

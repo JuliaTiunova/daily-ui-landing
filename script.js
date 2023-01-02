@@ -11,7 +11,6 @@ const cache = {
 
 let isMenuActive = false;
 let isSectionButtonOpened = false;
-let isMouseEntered = false;
 let isGalleryActive = false;
 let mainSections = ['about', 'gallery', 'contacts', 'menu'];
 
@@ -92,9 +91,36 @@ const closeAllSections = (boolean) => {
   cache.$body.addClass(`home-active`);
 };
 
+const initSlider = () => {
+  cache.$galleryImg.each((i, el) => {
+    if (i === 0) {
+      $(el).addClass('leftEdge');
+      $(el).trigger('click');
+    } else if (i === cache.$galleryImg.length - 1) {
+      $(el).addClass('rightEdge right');
+    }
+  });
+};
+
+const closeSlider = () => {
+  cache.$galleryImg.each((i, el) => {
+    $(el).removeClass();
+    $(el).addClass('gallery-bg js-gallery-img');
+  });
+};
+
 $('.js-burger-button').on('click', function () {
   isMenuActive = !isMenuActive;
   toggleSections(isMenuActive, 'menu');
+
+  $('body').on('click', function (e) {
+    if ($(e.target).closest('.header').length && isMenuActive) {
+      return;
+    }
+
+    isMenuActive = false;
+    toggleSections(false, 'menu');
+  });
 });
 
 $('.js-menu-item').on('click', function () {
@@ -128,14 +154,10 @@ cache.$toggleSectionButtonElement.on('click', function (e) {
 cache.$buttonSecondary
   .on('mouseenter', function (e) {
     $(this).find('.button-toggle_underline').animate({ left: '38px' }, 400);
-    isMouseEntered = true;
   })
   .on('mouseleave', function (e) {
-    if (isMouseEntered) {
-      $(this).find('.button-toggle_underline').animate({ left: '100%' }, 400);
-      $(this).find('.button-toggle_underline').animate({ left: '-100%' }, 0);
-      isMouseEntered = false;
-    }
+    $(this).find('.button-toggle_underline').animate({ left: '100%' }, 400);
+    $(this).find('.button-toggle_underline').animate({ left: '-100%' }, 0);
   });
 
 $('.js-button-home-main')
@@ -143,7 +165,7 @@ $('.js-button-home-main')
     const bground = $(this).find(cache.$btnHomeBackground);
     bground.animate({ left: '100%' }, 400);
   })
-  .on('mouseleave', function (e) {
+  .on('mouseleave', function () {
     const bground = $(this).find(cache.$btnHomeBackground);
     bground.animate({ left: '201%' }, 400);
     bground.animate({ left: '0' }, 0);
@@ -156,7 +178,7 @@ cache.$galleryImg.on('click', function () {
     return;
   }
 
-  $this.addClass('active center centerIndex');
+  $this.addClass('active center');
   $this.prev().addClass('leftIndex');
   $this.next().addClass('rightIndex');
 
@@ -170,31 +192,13 @@ cache.$galleryImg.on('click', function () {
 
   if ($this.next() && $this.next().hasClass('active')) {
     $this.next().next().removeClass('rightIndex');
-    $this.next().removeClass('active center centerIndex');
+    $this.next().removeClass('active center');
     $this.removeClass('left leftIndex');
   }
 
   if ($this.prev() && $this.prev().hasClass('active')) {
     $this.prev().prev().removeClass('leftIndex');
-    $this.prev().removeClass('active center centerIndex');
+    $this.prev().removeClass('active center');
     $this.removeClass('right rightIndex');
   }
 });
-
-function initSlider() {
-  cache.$galleryImg.each((i, el) => {
-    if (i === 0) {
-      $(el).addClass('leftEdge');
-      $(el).trigger('click');
-    } else if (i === cache.$galleryImg.length - 1) {
-      $(el).addClass('rightEdge right');
-    }
-  });
-}
-
-function closeSlider() {
-  cache.$galleryImg.each((i, el) => {
-    $(el).removeClass();
-    $(el).addClass('gallery-bg js-gallery-img');
-  });
-}
